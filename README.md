@@ -6,7 +6,7 @@ It is written in Javascript and uses the BBC api to get the schedule information
 
 #Screenshots
 <div align="center">
-  <img width="45%" src="public/imgs/bbc-screenshot.png">
+  <img width="90%" src="public/imgs/bbc-screenshot.png">
 </div>
 
 ##Technology
