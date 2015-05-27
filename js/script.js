@@ -23,13 +23,24 @@ function formatDate(start, end) {
 }
 
 function retrieveGenres() {
-    $.ajax({
-        url: 'http://www.bbc.co.uk/tv/programmes/genres.json',
-        dataType: 'json',
+  $.ajax({
+    url: 'http://www.bbc.co.uk/tv/programmes/genres.json',
+      dataType: 'json',
+  }).done(function(data) {
+      $.each(data.categories, function(index, value) {
+         $('#genres').append('<li>' + value.key + '</li>')
+      })
+  });
+}
+
+function getTomorrowsSchedule(genre) {
+  $.ajax({
+    url: 'http://www.bbc.co.uk/tv/programmes/genres/' + genre + '/schedules/tomorrow.json',
+    dataType: 'json',
     }).done(function(data) {
-        $.each(data.categories, function(index, value) {
-          $('#genres').append('<li>' + value.key + '</li>')
-        })
+      $.each(data.broadcasts, function(index, value) {
+        $('#programmes').append('<li>' + value.programme.display_titles.title+ ': ' + value.programme.short_synopsis + '</li>')
+      })
     });
 }
 
