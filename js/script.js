@@ -21,3 +21,28 @@ function formatDate(start, end) {
 
     return date;
 }
+
+function retrieveGenres() {
+    $.ajax({
+        url: 'http://www.bbc.co.uk/tv/programmes/genres.json',
+        dataType: 'json',
+    }).done(function(data) {
+        $.each(data.categories, function(index, value) {
+          $('#genres').append('<li>' + value.key + '</li>')
+        })
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
