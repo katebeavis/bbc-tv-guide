@@ -50,8 +50,10 @@ function getTomorrowsSchedule(genre) {
     beforeSend: function() {
       $('#programmes').empty();
       $('.active').removeClass('active');
+      $('#programmes').append('<div class="spinner"><img src="public/imgs/spinner.gif" /></div>');
     }
     }).done(function(data) {
+      $('.spinner').remove();
       $.each(data.broadcasts, function(index, value) {
         var title = '<h2>' + this.programme.display_titles.title + '</h2>';
         var synopsis = '<h3>' + this.programme.short_synopsis + '</h3>';
@@ -61,7 +63,6 @@ function getTomorrowsSchedule(genre) {
         var duration = '<p>' + Math.floor(this.duration/60); + '</p>';
 
         $('#programmes').append('<li>' + channel + title + time + duration + ' minutes' + synopsis + image + '</li>')
-
       })
     });
 }
